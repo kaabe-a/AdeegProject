@@ -1,6 +1,4 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
-import TopNavbar from '../components/TopNavbar'
 import Hero from '../components/Hero'
 import Footer from '../components/Footer'
 import Testimonial from '../components/Testimonial'
@@ -11,8 +9,6 @@ import WhyUs from '../components/WhyUs'
 const Home = () => {
   return (
     <div>
-      <TopNavbar/>
-      <Navbar/>
       <Hero/>
       <Featured/>
       <ProductList/>

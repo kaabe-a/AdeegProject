@@ -1,6 +1,7 @@
 import { useState } from 'react'
+import "bootstrap/dist/css/bootstrap.min.css";
+import * as Unicons from '@iconscout/react-unicons';
 import './App.css'
-import { UilPhone } from '@iconscout/react-unicons'
 import Home from './pages/Home'
 
 function App() {

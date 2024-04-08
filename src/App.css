@@ -8,3 +8,7 @@
     background-color: #D2EFE1;
 }
 
+.rounded {
+    border-radius:50%!important;
+    padding: 1rem;
+}

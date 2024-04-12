@@ -13,6 +13,17 @@
     padding: 1rem;
 }
 
+.section_title{
+  position: absolute;
+  width: 130px;
+  bottom: 45px;
+  border-bottom: 3px solid #D2EFE1;
+}
+
+.section_link{
+  text-decoration: none;
+  /* color: #000000; */
+}
 
 
 /* Swiper CSS */

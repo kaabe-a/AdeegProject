@@ -34,7 +34,7 @@ const Testimonial = () => {
             className="mySwiper py-5"
           >
             <div className="row">
-              <div className="col-sm-3">
+              <div className="col-md-3">
                 <SwiperSlide>
                   <div className="card">
                     <div className="card-body p-4">
@@ -66,7 +66,7 @@ const Testimonial = () => {
                   </div>
                 </SwiperSlide>
               </div>
-              <div className="col-sm-3">
+              <div className="col-md-3">
                 <SwiperSlide>
                 <div className="card">
                     <div className="card-body p-4">
@@ -98,7 +98,7 @@ const Testimonial = () => {
                   </div>
                 </SwiperSlide>
               </div>
-              <div className="col-sm-3">
+              <div className="col-md-3">
                 <SwiperSlide>
                 <div className="card">
                     <div className="card-body p-4">
@@ -130,7 +130,7 @@ const Testimonial = () => {
                   </div>
                 </SwiperSlide>
               </div>
-              <div className="col-sm-3">
+              <div className="col-md-3">
                 <SwiperSlide>
                 <div className="card">
                     <div className="card-body p-4">
@@ -162,7 +162,7 @@ const Testimonial = () => {
                   </div>
                 </SwiperSlide>
               </div>
-              <div className="col-sm-3">
+              <div className="col-md-3">
                 <SwiperSlide>
                 <div className="card">
                     <div className="card-body p-4">
@@ -194,7 +194,7 @@ const Testimonial = () => {
                   </div>
                 </SwiperSlide>
               </div>
-              <div className="col-sm-3">
+              <div className="col-md-3">
                 <SwiperSlide>
                 <div className="card">
                     <div className="card-body p-4">
@@ -226,7 +226,7 @@ const Testimonial = () => {
                   </div>
                 </SwiperSlide>
               </div>
-              <div className="col-sm-3">
+              <div className="col-md-3">
                 <SwiperSlide>
                 <div className="card">
                     <div className="card-body p-4">
@@ -258,7 +258,7 @@ const Testimonial = () => {
                   </div>
                 </SwiperSlide>
               </div>
-              <div className="col-sm-3">
+              <div className="col-md-3">
                 <SwiperSlide>
                 <div className="card">
                     <div className="card-body p-4">
@@ -290,7 +290,7 @@ const Testimonial = () => {
                   </div>
                 </SwiperSlide>
               </div>
-              <div className="col-sm-3">
+              <div className="col-md-3">
                 <SwiperSlide>
                 <div className="card">
                     <div className="card-body p-4">

@@ -8,7 +8,7 @@ const WhyUs = () => {
         <h3 class="text-center py-5">Why Us</h3>
         <div className="row">
           <div className="col-md-4">
-          <div className="whyus_info d-md-flex justify-content-between gap-3 align-items-start text-center text-md-start">
+          <div className="whyus_info d-lg-flex justify-content-between gap-3 align-items-start text-center text-md-start">
             <span className='rounded bg-white'>
               <UilClock size="80"/>
             </span>
@@ -22,7 +22,7 @@ const WhyUs = () => {
           </div>
           </div>
           <div className="col-md-4">
-          <div className="whyus_info d-md-flex justify-content-between gap-3 align-items-start text-center text-md-start">
+          <div className="whyus_info d-lg-flex justify-content-between gap-3 align-items-start text-center text-md-start">
             <span className='rounded bg-white'>
               <UilTruck size="80"/>
             </span>
@@ -36,7 +36,7 @@ const WhyUs = () => {
           </div>
           </div>
           <div className="col-md-4">
-          <div className="whyus_info d-md-flex justify-content-between gap-3 align-items-start text-center text-md-start">
+          <div className="whyus_info d-lg-flex justify-content-between gap-3 align-items-start text-center text-md-start">
             <span className='rounded bg-white'>
               <UilCommentAltQuestion size="80"/>
             </span>

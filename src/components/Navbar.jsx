@@ -1,15 +1,37 @@
 import React from "react";
 import { UilPhone } from "@iconscout/react-unicons";
 import { Link } from "react-router-dom";
-import { UilAlignLeft } from '@iconscout/react-unicons'
+import { UilAlignLeft } from "@iconscout/react-unicons";
+import { useQuery } from "@tanstack/react-query";
+import Axios from "axios";
+
 const Navbar = () => {
+  const { status, error, data } = useQuery({
+    queryKey: ["catData"],
+    queryFn: () =>
+      fetch("https://adeeg-oragnic.onrender.com/api/category").then((res) =>
+        res.json()
+      ),
+  });
+  // if (status === "pending") {
+  //   return <span>Loading...</span>;
+  // }
+
+  // if ( status === "error") {
+  //   return <span>Error: {error.message}</span>;
+  // }
+  // for (const element of data["data"]) {
+  //   console.log(element.name);
+  // }
+
   return (
+    <>
     <nav className="navbar navbar-expand-lg bg-white navbar-light">
       <div className="container">
         <ul className="navbar-nav d-none d-sm-none d-md-none d-lg-block ">
           <li class="nav-item dropdown">
-            
-            <a style={{borderRadius:"0"}}
+            <a
+              style={{ borderRadius: "0" }}
               class="nav-link dropdown-toggle btn btn-lg bg-success text-light"
               href="#"
               id="navbarDropdown"
@@ -17,11 +39,11 @@ const Navbar = () => {
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-               <UilAlignLeft/> Categories
+              <UilAlignLeft /> Categories
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="">
                   Fruits
                 </a>
               </li>
@@ -66,44 +88,41 @@ const Navbar = () => {
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav justify-content-center flex-grow-1">
-
-          <ul className="navbar-nav d-block d-md-none pt-3 ">
-          <li class="nav-item dropdown">
-            
-            <a style={{borderRadius:"0"}}
-              class="nav-link dropdown-toggle btn btn-lg bg-success text-light"
-              href="#"
-              id="navbarDropdown"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-               <UilAlignLeft/> Categories
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li>
-                <a class="dropdown-item" href="#">
-                  Fruits
+            <ul className="navbar-nav d-block d-md-none pt-3 ">
+              <li class="nav-item dropdown">
+                <a
+                  style={{ borderRadius: "0" }}
+                  class="nav-link dropdown-toggle btn btn-lg bg-success text-light"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <UilAlignLeft /> Categories
                 </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="#">
-                  Vegetables
-                </a>
-              </li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-              <li>
-                <a class="dropdown-item" href="#">
-                  Featured
-                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li>
+                    <a class="dropdown-item" href="#">
+                      Fruits
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">
+                      Vegetables
+                    </a>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">
+                      Featured
+                    </a>
+                  </li>
+                </ul>
               </li>
             </ul>
-          </li>
-        </ul>
-
-
 
             <li className="nav-item">
               <Link to={"/"} className="nav-link">
@@ -116,12 +135,12 @@ const Navbar = () => {
               </a>
             </li>
             <li className="nav-item">
-              <Link to={"/"} className="nav-link">
-                New Products
+              <Link to={"/products"} className="nav-link">
+                Products
               </Link>
             </li>
             <li className="nav-item">
-            <Link to={"/about"} className="nav-link">
+              <Link to={"/about"} className="nav-link">
                 About Us
               </Link>
             </li>
@@ -133,6 +152,7 @@ const Navbar = () => {
         </div>
       </div>
     </nav>
+    </>
   );
 };
 

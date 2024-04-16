@@ -1,61 +1,130 @@
 import React from "react";
-import Card from "./Card";
-import {vegetables,fruits,best_sales} from "./product";
-import { UilAngleRight } from '@iconscout/react-unicons'
+import Card from "./ProductCard";
+import { vegetables, fruits, best_sales } from "./product";
+import { UilAngleRight } from "@iconscout/react-unicons";
+import { useQuery } from "@tanstack/react-query";
 
 const ProductList = () => {
+  function fetchFruits() {
+    return fetch(
+      "https://adeeg-oragnic.onrender.com/api/product/new_four_fruit_products"
+    ).then((res) => res.json());
+  }
+  function fetchVegetables() {
+    return fetch(
+      "https://adeeg-oragnic.onrender.com/api/product/new_four_vegetable_products"
+    ).then((res) => res.json());
+  }
+  const fetchLastProducts = () => {
+    return fetch(
+      "https://adeeg-oragnic.onrender.com/api/product/last_new_four_products"
+    ).then((res) => res.json());
+  };
+
+  const { status, error, data } = useQuery({
+    queryKey: ["fruitData"],
+    queryFn: fetchFruits,
+  });
+  const {
+    vstatus,
+    verror,
+    data: vdata,
+  } = useQuery({
+    queryKey: ["vegData"],
+    queryFn: fetchVegetables,
+  });
+  const {
+    lstatus,
+    lerror,
+    data: ldata,
+  } = useQuery({
+    queryKey: ["lastData"],
+    queryFn: fetchLastProducts,
+  });
+
+  if (status === "pending") {
+    return <span>Loading...</span>;
+  }
+
+  if (status === "error") {
+    return <span>Error: {error.message}</span>;
+  }
+
+  if (vstatus === "pending") {
+    return <span>Loading...</span>;
+  }
+
+  if (vstatus === "verror") {
+    return <span>vError: {verror.message}</span>;
+  }
+
+  if (lstatus === "pending") {
+    return <span>Loading...</span>;
+  }
+
+  if (lstatus === "verror") {
+    return <span>vError: {lerror.message}</span>;
+  }
+
+  console.log(vdata);
+
   return (
     <div className="container py-5">
-        <div className="product_header py-5 d-flex justify-content-between position-relative">
-        <h3 className="text-start">Best Sales</h3>
+      <div className="product_header py-5 d-flex justify-content-between position-relative">
+        <h3 className="text-start">Fruits</h3>
         <span className="section_title"></span>
-        <a href="#" className="section_link">View All <UilAngleRight/></a>
-
+        <a href="#" className="section_link">
+          View All <UilAngleRight />
+        </a>
       </div>
       <div className="row row-cols-1 g-4 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-        {best_sales.map((best_sale) => (
+        {data["data"].map((fruit) => (
           <Card
-            image_link={best_sale.image_link}
-            name={best_sale.name}
-            description={best_sale.description}
-            price_per_kg={best_sale.price_per_kg}
-            category={best_sale.category}
+            image_link={fruit.image_url ? fruit.image_url : thumnail}
+            name={fruit.name}
+            description={fruit.description}
+            amount={fruit.amount}
+            quantity={fruit.quantity}
+            category={fruit.category.name}
           />
         ))}
       </div>
       <div className="product_header py-5 d-flex justify-content-between position-relative">
         <h3 className="text-start">Vegetables</h3>
         <span className="section_title"></span>
-        <a href="#" className="section_link">View All <UilAngleRight/></a>
-
+        <a href="#" className="section_link">
+          View All <UilAngleRight />
+        </a>
       </div>
       <div className="row row-cols-1 g-4 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-        {vegetables.map((vegetable) => (
+        {vdata["data"].map((vegetable) => (
           <Card
-            image_link={vegetable.image_link}
+            image_link={vegetable.image_url ? vegetable.image_url : thumnail}
             name={vegetable.name}
             description={vegetable.description}
-            price_per_kg={vegetable.price_per_kg}
-            category={vegetable.category}
+            amount={vegetable.amount}
+            quantity={vegetable.quantity}
+            category={vegetable.category.name}
           />
         ))}
       </div>
 
-
       <div className="product_header py-5 d-flex justify-content-between position-relative">
-        <h3 className="text-start">Fruits</h3>
+        <h3 className="text-start">Last 4 Products</h3>
         <span className="section_title"></span>
-        <a href="#" className="section_link">View All <UilAngleRight/></a>
-        
+        <a href="#" className="section_link">
+          View All <UilAngleRight />
+        </a>
       </div>
       <div className="row row-cols-1 g-4 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-        {fruits.map((fruit) => (
+        {ldata["data"].map((last) => (
           <Card
-            image_link={fruit.image_link}
-            name={fruit.name}
-            description={fruit.description}
-            price_per_kg={fruit.price_per_kg}
-            category={fruit.category}
+            image_link={last.image_url ? last.image_url : thumnail}
+            name={last.name}
+            description={last.description}
+            amount={last.amount}
+            quantity={last.quantity}
+            category={last.category.name}
           />
         ))}
       </div>

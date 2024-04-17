@@ -7,17 +7,17 @@ import { useQuery } from "@tanstack/react-query";
 const ProductList = () => {
   function fetchFruits() {
     return fetch(
-      "https://adeeg-oragnic.onrender.com/api/product/new_four_fruit_products"
+      "https://adeeg-oragnic.onrender.com/api/product/report/new_four_fruit_products"
     ).then((res) => res.json());
   }
   function fetchVegetables() {
     return fetch(
-      "https://adeeg-oragnic.onrender.com/api/product/new_four_vegetable_products"
+      "https://adeeg-oragnic.onrender.com/api/product/report/new_four_vegetable_products"
     ).then((res) => res.json());
   }
   const fetchLastProducts = () => {
     return fetch(
-      "https://adeeg-oragnic.onrender.com/api/product/last_new_four_products"
+      "https://adeeg-oragnic.onrender.com/api/product/report/last_new_four_products"
     ).then((res) => res.json());
   };
 
@@ -66,7 +66,7 @@ const ProductList = () => {
     return <span>vError: {lerror.message}</span>;
   }
 
-  console.log(vdata);
+  // console.log(vdata,"hellow");
 
   return (
     <div className="container py-5">
@@ -78,7 +78,7 @@ const ProductList = () => {
         </a>
       </div>
       <div className="row row-cols-1 g-4 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-        {data["data"].map((fruit) => (
+        {data["data"]?.map((fruit) => (
           <Card
             image_link={fruit.image_url ? fruit.image_url : thumnail}
             name={fruit.name}
@@ -97,7 +97,7 @@ const ProductList = () => {
         </a>
       </div>
       <div className="row row-cols-1 g-4 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-        {vdata["data"].map((vegetable) => (
+        {data["data"]?.map((vegetable) => (
           <Card
             image_link={vegetable.image_url ? vegetable.image_url : thumnail}
             name={vegetable.name}
@@ -117,7 +117,7 @@ const ProductList = () => {
         </a>
       </div>
       <div className="row row-cols-1 g-4 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-        {ldata["data"].map((last) => (
+        {ldata["data"]?.map((last) => (
           <Card
             image_link={last.image_url ? last.image_url : thumnail}
             name={last.name}

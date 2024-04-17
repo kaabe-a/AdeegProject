@@ -9,8 +9,10 @@ import TopNavbar from "./components/TopNavbar";
 import Navbar from "./components/Navbar";
 import Product from "./pages/product/Product";
 import Footer from "./components/Footer";
+import ProductDetail from "./pages/productDetail/ProductDetail";
 
 function App() {
+
   return (
     <div>
       <Router>
@@ -22,6 +24,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/About" element={<About />} />
           <Route path="/products" element={<Product />} />
+          <Route path="/products/:id" element={<ProductDetail />} />
           <Route path="*" element={<h3>Page Not Found</h3>} />
         </Routes>
         <Footer />

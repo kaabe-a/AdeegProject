@@ -48,9 +48,6 @@
   text-overflow: ellipsis;
 }
 
-.product__image {
-  border: 1px solid black;
-}
 .product_detail_image {
   width: 100%;
   min-height: 400px;

@@ -49,7 +49,7 @@ export default function ProductDetail() {
       <div className="container py-5">
         <div className="row">
           <div className="col-md-2">Slide</div>
-          <div className="col-md-4 product__image">
+          <div className="col-md-4">
             <img
               className="img-fluid w-100 product_detail_image"
               src={productQuery.data["data"][0].image_url}
@@ -58,8 +58,8 @@ export default function ProductDetail() {
           </div>
           <div className="col-md-6">
             <div className="title d-flex justify-content-start gap-3 text-center text-md-start">
-              <h3>{}</h3>
-              <input type="button" className="btn btn-light" value="in Stock" />
+              <h3>{productQuery.data["data"][0].name}</h3>
+              <input type="button" className="btn btn-light disabled" value="in Stock" />
             </div>
             <div className="category d-flex gap-2 text-center text-md-start">
               <span>Category</span>
@@ -115,14 +115,14 @@ export default function ProductDetail() {
               <div className="row align-items-center gap-2">
                 <div className="col-md-2 d-flex gap-2 align-items-center">
                   <button
-                    className="btn btn-md bg-light fs-4 text-dark"
+                    className="btn btn-sm rounded-circle bg-light fs-3 text-dark"
                     type="button"
                   >
                     +
                   </button>
                   <span>5</span>
                   <button
-                    className="btn btn-md bg-light fs-4 text-dark"
+                    className="btn btn-sm rounded-circle bg-light fs-3 text-dark"
                     type="button"
                   >
                     -

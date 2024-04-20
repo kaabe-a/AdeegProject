@@ -114,11 +114,6 @@ const Navbar = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <a href="#learn" className="nav-link">
-                  Best Sales
-                </a>
-              </li>
-              <li className="nav-item">
                 <Link to={"/products"} className="nav-link">
                   Products
                 </Link>
@@ -126,6 +121,11 @@ const Navbar = () => {
               <li className="nav-item">
                 <Link to={"/about"} className="nav-link">
                   About Us
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to={"/contact"} className="nav-link">
+                  Contact Us
                 </Link>
               </li>
             </ul>

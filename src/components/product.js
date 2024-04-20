@@ -1,6 +1,7 @@
 
 export const vegetables = [
   {
+    id:1,
     name: "Tomatoes",
 
     category: "Vegetable",
@@ -11,6 +12,7 @@ export const vegetables = [
     image_link: "./images/potato.png",
   },
   {
+    id:1,
     name: "watermelon",
     category: "Vegetable",
     price_per_kg: 1.5,
@@ -20,6 +22,7 @@ export const vegetables = [
     image_link: "./images/watermelon.png",
   },
   {
+    id:1,
     name: "Tomatoes",
 
     category: "Vegetable",
@@ -30,6 +33,7 @@ export const vegetables = [
     image_link: "./images/potato.png",
   },
   {
+    id:1,
     name: "Tomatoes",
 
     category: "Vegetable",

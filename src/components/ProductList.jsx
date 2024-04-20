@@ -117,7 +117,7 @@ const ProductList = () => {
         </a>
       </div>
       <div className="row row-cols-1 g-4 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-        {ldata["data"]?.map((last) => (
+        {data["data"]?.map((last) => (
           <Card
             image_link={last.image_url ? last.image_url : thumnail}
             name={last.name}

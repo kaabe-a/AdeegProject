@@ -56,3 +56,12 @@
   min-height: 400px;
   object-fit: cover;
 }
+
+.cart-image{
+  border: 1px solid gray;
+  border-radius: 10%;
+}
+
+.cart__detail{
+  border-left: 1px solid gray;
+}

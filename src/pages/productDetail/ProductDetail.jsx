@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import ProductList from "../../components/ProductList";
+import { Link, useParams } from "react-router-dom";
 import { UilHeartAlt } from "@iconscout/react-unicons";
 import { useQuery } from "@tanstack/react-query";
 import Axios from "axios";
 import { UilFavorite } from "@iconscout/react-unicons";
 import Card from "../../components/ProductCard";
-import { best_sales } from "../../components/product";
 
 export default function ProductDetail() {
   const thumnail = "https://via.placeholder.com/1000";
@@ -28,8 +26,6 @@ export default function ProductDetail() {
     queryFn: () => getPost(id),
   });
 
-  // const category_id = productQuery?.data["data"][0]?.category?._id;
-  // console.log(category_id,"ma hubtaa")
 
   const productByCategoryQuery = useQuery({
     enabled: !!productQuery,
@@ -38,23 +34,6 @@ export default function ProductDetail() {
       getPostByCategory(productQuery?.data["data"][0]?.category?._id),
   });
 
-  // useEffect(() => {
-  //   let category = data["data"][0].category?._id;
-  //   console.log(category);
-  //   fetch(
-  //     `https://adeeg-oragnic.onrender.com/api/product/related_products/${category}`
-  //   )
-  //     .then((response) => response.json())
-  //     .then((data) => setProductByCategory(data));
-  // }, [data]);
-
-  // if (status === "pending") {
-  //   return <span>Loading...</span>;
-  // }
-
-  // if (status === "error") {
-  //   return <span>Error: {error.message}</span>;
-  // }
 
   if (productQuery.isLoading) {
     return <span>Loading...</span>;
@@ -165,15 +144,17 @@ export default function ProductDetail() {
           <h3 className="text-center">Related Products</h3>
         </div>
         <div className="row row-cols-1 g-4 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-          {productByCategoryQuery.data["data"].map((fruit) => (
+          {productByCategoryQuery.data["data"].map((product) => (
+            // <Link style={{ textDecoration: "none" }}>
             <Card
-              image_link={fruit.image_url ? fruit.image_url : thumnail}
-              name={fruit.name}
-              description={fruit.description}
-              amount={fruit.amount}
-              quantity={fruit.quantity}
-              category={fruit.category.name}
+              image_link={product.image_url ? product.image_url : thumnail}
+              name={product.name}
+              description={product.description}
+              amount={product.amount}
+              quantity={product.quantity}
+              category={product.category.name}
             />
+            // </Link>
           ))}
         </div>
       </div>

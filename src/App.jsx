@@ -10,11 +10,12 @@ import Navbar from "./components/Navbar";
 import Product from "./pages/product/Product";
 import Footer from "./components/Footer";
 import ProductDetail from "./pages/productDetail/ProductDetail";
-
+import Cart from "./pages/cart/Cart";
+import { ShopContextProvider } from "./context/ShopContext";
 function App() {
 
   return (
-    <div>
+    <ShopContextProvider>
       <Router>
         <div>
           <TopNavbar />
@@ -24,12 +25,13 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/About" element={<About />} />
           <Route path="/products" element={<Product />} />
+          <Route path="/cart" element={<Cart />} />
           <Route path="/products/:id" element={<ProductDetail />} />
           <Route path="*" element={<h3>Page Not Found</h3>} />
         </Routes>
         <Footer />
       </Router>
-    </div>
+    </ShopContextProvider>
   );
 }
 

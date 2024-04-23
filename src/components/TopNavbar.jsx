@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { UilShoppingCartAlt } from "@iconscout/react-unicons";
 import { UilSearch } from "@iconscout/react-unicons";
 import { Link } from "react-router-dom";
-
+import { CartContext } from "../context/CartContext";
 const TopNavbar = () => {
+  const {qty,total} = useContext(CartContext)
   return (
     <div className="container">
       <nav className="navbar border_top navbar-expand-lg bg-white navbar-light pt-2 d-none d-md-block d-md-flex justify-content-between align-items-center">
@@ -44,14 +45,14 @@ const TopNavbar = () => {
             <span className="position-relative">
               <UilShoppingCartAlt size="40" color="#000" />
               <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
-                9
+              {qty}
               </span>
             </span>
             <span className="d-flex flex-column">
               <span className="text-suceess" style={{ fontSize: 10 }}>
                 My Cart
               </span>
-              <span className="primary-color">$6</span>
+              <span className="primary-color">${total}</span>
             </span>
           </div>
         </Link>

@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { UilHeartAlt } from "@iconscout/react-unicons";
 import { useQuery } from "@tanstack/react-query";
 import Axios from "axios";
 import { UilFavorite } from "@iconscout/react-unicons";
-import Card from "../../components/ProductCard";
+import { UilShoppingCartAlt } from "@iconscout/react-unicons";
+import { CartContext } from "../../context/CartContext";
+
 
 export default function ProductDetail() {
+ const {addToCart,decreaseQty,increaseQty,qty} = useContext(CartContext)
+
   const thumnail = "https://via.placeholder.com/1000";
   const { id } = useParams();
 
@@ -26,7 +30,6 @@ export default function ProductDetail() {
     queryFn: () => getPost(id),
   });
 
-
   const productByCategoryQuery = useQuery({
     enabled: !!productQuery,
     queryKey: ["productByCategory", productQuery],
@@ -34,16 +37,13 @@ export default function ProductDetail() {
       getPostByCategory(productQuery?.data["data"][0]?.category?._id),
   });
 
-
   if (productQuery.isLoading) {
-    return <span>Loading...</span>;
+    return <div className="container text-center py-5">Loading..</div>;
   }
   if (productByCategoryQuery.isLoading) {
-    return <span>Loading...</span>;
+    return <div className="container text-center py-5">Loading...</div>;
   }
 
-  console.log(productByCategoryQuery.data["data"])
- 
   return (
     <>
       <div className="container py-5">
@@ -59,7 +59,11 @@ export default function ProductDetail() {
           <div className="col-md-6">
             <div className="title d-flex justify-content-start gap-3 text-center text-md-start">
               <h3>{productQuery.data["data"][0].name}</h3>
-              <input type="button" className="btn btn-light disabled" value="in Stock" />
+              <input
+                type="button"
+                className="btn btn-light disabled"
+                value="in Stock"
+              />
             </div>
             <div className="category d-flex gap-2 text-center text-md-start">
               <span>Category</span>
@@ -117,19 +121,19 @@ export default function ProductDetail() {
                   <button
                     className="btn btn-sm rounded-circle bg-light fs-3 text-dark"
                     type="button"
-                  >
+                    onClick={() => increaseQty(productQuery.data["data"][0].id)}>
                     +
                   </button>
-                  <span>5</span>
+                  <span>7</span>
                   <button
                     className="btn btn-sm rounded-circle bg-light fs-3 text-dark"
                     type="button"
-                  >
+                    onClick={() => decreaseQty(productQuery.data["data"][0].id)}>
                     -
                   </button>
                 </div>
                 <div className="col-md-6">
-                  <button className="btn bg-success btn-lg text-white w-100">
+                  <button className="btn bg-success btn-lg text-white w-100" onClick={() => addToCart(productQuery.data["data"][0], productQuery.data["data"][0].id)}>
                     add cart
                   </button>
                 </div>
@@ -145,19 +149,57 @@ export default function ProductDetail() {
         </div>
         <div className="row row-cols-1 g-4 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
           {productByCategoryQuery.data["data"].map((product) => (
-            // <Link style={{ textDecoration: "none" }}>
-            <Card
-              image_link={product.image_url ? product.image_url : thumnail}
-              name={product.name}
-              description={product.description}
-              amount={product.amount}
-              quantity={product.quantity}
-              category={product.category.name}
-            />
-            // </Link>
+            <div className="product_card">
+              <div className="col">
+                <div className="card shadow-sm border-0">
+                  <div className="top-img position-relative bg-light">
+                    <Link to={`/products/${product.id}`} style={{ textDecoration: "none" }}>
+                      <img
+                        src={product?.image_url}
+                        className="card-img-top img-fluid"
+                        style={{ height: "150px" }}
+                        alt="..."
+                      />
+                    </Link>
+                  </div>
+
+                  <div className="card-body position-relative">
+                    <h5 className="card-title text-center short-title">
+                      {product.name}
+                    </h5>
+                    <h5 className="text-secondary text-center">
+                      {product.category.name}
+                    </h5>
+                    <p className="card-text text-center short-description">
+                      {product.description}
+                    </p>
+                  </div>
+                  <div className="d-flex justify-content-center gap-4">
+                    <span className="text-center">${product.amount}/Kg</span>
+                    <span className="text-center">{product?.quantity}/qty</span>
+                  </div>
+                  <button
+                    className="btn btn-light text-white m-4"
+                    style={{ backgroundColor: "#02CA89" }}
+                    onClick={() => addToCart(product, product.id)}
+                  >
+                    <UilShoppingCartAlt color="white" /> Add
+                  </button>
+                </div>
+              </div>
+            </div>
           ))}
         </div>
       </div>
     </>
   );
 }
+
+{/* <Card
+  image_link={product.image_url ? product.image_url : thumnail}
+  name={product.name}
+  description={product.description}
+  amount={product.amount}
+  quantity={product.quantity}
+  category={product.category.name}
+/>; */}

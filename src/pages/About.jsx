@@ -5,7 +5,7 @@ import { UilInstagram } from "@iconscout/react-unicons";
 import { UilSnapchatAlt } from "@iconscout/react-unicons";
 const About = () => {
   return (
-    <section className="bg-light">
+    <section className="bg-light" style={{marginTop:"9rem"}}>
       <div className="container-md py-5">
         <div className="d-md-flex justify-content-between gap-3 align-items-center px-5">
           <img

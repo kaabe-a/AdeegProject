@@ -46,7 +46,7 @@ export default function ProductDetail() {
 
   return (
     <>
-      <div className="container py-5">
+      <div className="container py-5" style={{marginTop:"9rem"}}>
         <div className="row">
           <div className="col-md-2">Slide</div>
           <div className="col-md-4">

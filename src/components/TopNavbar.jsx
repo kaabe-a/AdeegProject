@@ -1,10 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { UilShoppingCartAlt } from "@iconscout/react-unicons";
 import { UilSearch } from "@iconscout/react-unicons";
 import { Link } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
+import { useEffect } from "react";
+
 const TopNavbar = () => {
   const {qty,total} = useContext(CartContext)
+
   return (
     <div className="container">
       <nav className="navbar border_top navbar-expand-lg bg-white navbar-light pt-2 d-none d-md-block d-md-flex justify-content-between align-items-center">

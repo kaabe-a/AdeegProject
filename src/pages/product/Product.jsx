@@ -25,7 +25,7 @@ const Product = () => {
   // }
 
   return (
-    <div className="container py-5">
+    <div className="container py-5" style={{marginTop:"9rem"}}>
       <h3 className="text-center py-4">All Products</h3>
 
       <div className="row row-cols-1 g-4 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">

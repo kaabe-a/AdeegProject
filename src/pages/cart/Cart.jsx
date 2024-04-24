@@ -9,7 +9,7 @@ import { CartContext } from "../../context/CartContext";
 const Cart = () => {
   const { cart, removeFromCart, clearCart,total,qty } = useContext(CartContext);
   return (
-    <div className="container p-5">
+    <div className="container p-5" style={{marginTop:"9rem"}}>
       <div className="row pt-5 border">
         <div className="col-md-8 cart__item">
           <div className="d-flex justify-content-between align-items-center">
@@ -36,6 +36,7 @@ const Cart = () => {
         </div>
         <div className="col-md-4 cart__detail bg-light">
           <h3>Summary</h3>
+          
           <hr className="mt-5" />
           <div className="d-flex justify-content-between">
             <span className="d-flex gap-3">

@@ -2,7 +2,7 @@ import React from 'react'
 import { UilArrowRight } from '@iconscout/react-unicons'
 const Hero = () => {
   return (
-    <div className='hero py-5'>
+    <div className='hero py-5' style={{marginTop:"9rem"}}>
     <div className="container pt-5">
     <div className="d-sm-flex justify-content-between align-items-center">
         <div className="hero__info text-center text-md-start">
